@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unit-converter-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: unit-converter
+  template:
+    metadata:
+      labels:
+        app: unit-converter
+    spec:
+      containers:
+      - name: unit-converter
+        image: your-dockerhub-username/unit-converter:latest
+        ports:
+        - containerPort: 5000
