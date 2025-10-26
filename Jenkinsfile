@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "nandhu1332/unit-converter"
+        DOCKER_IMAGE = "kadarinandhini/unit-converter"
     }
 
     stages {
