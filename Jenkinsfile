@@ -15,19 +15,21 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t case:latest .'
+                sh 'docker build -t $DOCKER_IMAGE:latest .'
             }
         }
 
         stage('Push to Docker Hub') {
             steps {
+                // Use your Docker credentials here
                 sh 'docker login -u kadarinandhini -p admin@123'
-                sh 'docker push case:latest'
+                sh 'docker push $DOCKER_IMAGE:latest'
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
+                // Make sure your deployment.yaml points to kadarinandhini/unit-converter:latest
                 sh 'kubectl apply -f deployment.yaml'
                 sh 'kubectl apply -f service.yaml'
             }
