@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: unit-converter-service
 spec:
-  type: LoadBalancer
   selector:
     app: unit-converter
+  type: NodePort
   ports:
-  - port: 80
-    targetPort: 5000
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      nodePort: 30001
