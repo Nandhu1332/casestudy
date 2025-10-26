@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/unit-converter.git'
+                git 'https://github.com/Nandhu1332/unit-converter.git'
             }
         }
 
