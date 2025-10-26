@@ -2,13 +2,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "nandhu1332/casestudy"
+        DOCKER_IMAGE = "nandhu1332/unit-converter"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Nandhu1332/casestudy.git'
+                git branch: 'main',
+                    url: 'https://github.com/Nandhu1332/casestudy.git'
             }
         }
 
@@ -20,7 +21,7 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                sh 'docker login -u kadarinandhini -p admin@123'
+                sh 'docker login -u your-dockerhub-username -p your-dockerhub-password'
                 sh 'docker push $DOCKER_IMAGE:latest'
             }
         }
@@ -35,7 +36,7 @@ pipeline {
 
     post {
         success {
-            echo "✅ Deployment successful!"
+            echo "✅ Pipeline completed successfully!"
         }
         failure {
             echo "❌ Pipeline failed!"
