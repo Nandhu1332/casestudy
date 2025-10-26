@@ -15,14 +15,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE:latest .'
+                sh 'docker build -t case:latest .'
             }
         }
 
         stage('Push to Docker Hub') {
             steps {
                 sh 'docker login -u kadarinandhini -p admin@123'
-                sh 'docker push $DOCKER_IMAGE:latest'
+                sh 'docker push case:latest'
             }
         }
 
