@@ -2,14 +2,13 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
-        DOCKER_IMAGE = "your-dockerhub-username/unit-converter"
+        DOCKER_IMAGE = "nandhu1332/casestudy"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Nandhu1332/unit-converter.git'
+                git 'https://github.com/Nandhu1332/casestudy.git'
             }
         }
 
@@ -21,10 +20,8 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                    sh 'docker push $DOCKER_IMAGE:latest'
-                }
+                sh 'docker login -u kadarinandhini -p admin@123'
+                sh 'docker push $DOCKER_IMAGE:latest'
             }
         }
 
