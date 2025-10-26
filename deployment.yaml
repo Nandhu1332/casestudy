@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: unit-converter
-        image: your-dockerhub-username/unit-converter:latest
+        image: kadarinandhini/unit-converter:latest
         ports:
         - containerPort: 5000
